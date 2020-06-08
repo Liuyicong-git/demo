@@ -4,7 +4,6 @@ export default {
     computed:{
         style() {
             const ret = {};
-      
             if (this.gutter) {
               ret.marginLeft = `-${this.gutter / 2}px`;
               ret.marginRight = ret.marginLeft;
@@ -13,12 +12,16 @@ export default {
             return ret;
           }
     },
+    provide(){
+        return {
+            row:this
+        };
+    },
     render:function(h){
-
-        return h('div', 
+        return h(this.tags, 
         {
             class:['l-row' ],
-            // style: this.style
+            style: this.style
         }
         , this.$slots.default )
     },
@@ -26,6 +29,10 @@ export default {
         gutter:{
             type:Number,
             default:0
+        },
+        tags: {
+            type:String,
+            default:'div'
         }
     }
 }

@@ -1,7 +1,7 @@
 <template>
     <div>
-      <l-row :gutter="20">
-          <l-col :span="6">sd</l-col>
+      <l-row>
+          <l-col :span="6" :offset="6">sd</l-col>
           <l-col :span="6">sd</l-col>
           <l-col :span="6">sd</l-col>
           <l-col :span="6">sd</l-col>
