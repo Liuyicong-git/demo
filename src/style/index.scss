@@ -1,16 +1,10 @@
-
-
+@import './config.scss';
+@import './option.scss';
 @for $i from 1 through 24 {
     .l-col-#{$i} {
         width: ( $i * 1/24 * 100 ) * 1%;
     }
 } 
-.l-row {
-    display: block;
-    box-sizing:border-box;
-    height: 100%;
-}
-
 /*
     css 选择器匹配满足class*=
     [class*=]
@@ -23,5 +17,15 @@
 @for $i from 1 through 24 {
     .l-col-offset-#{$i}{
         margin-left: ( $i * 1/24 * 100 ) * 1%;
+    }
+}
+@include b(row) {
+    box-sizing:border-box;
+    height: 100%;
+    @include m(flex){
+        display: flex;
+        @include when(justify-center) {
+            justify-content: center;
+        }
     }
 }

@@ -18,9 +18,15 @@ export default {
         };
     },
     render:function(h){
+        let classList =[];
+        console.log(this)
+        if(this.type =='flex') classList.push('l-row--flex')
+        if(this.justify) {
+            classList.push ('is-justify-'+ this.justify)
+        }
         return h(this.tags, 
         {
-            class:['l-row' ],
+            class:['l-row',...classList ],
             style: this.style
         }
         , this.$slots.default )
@@ -33,6 +39,8 @@ export default {
         tags: {
             type:String,
             default:'div'
-        }
+        },
+        type: String,
+        justify: String,
     }
 }

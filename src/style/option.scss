@@ -1,0 +1,30 @@
+/**
+    @mixin  使用很广 可参照sass 官方文档
+    此处使用动态 遵循BEM规则 方便代码阅读
+    如b(row) 将动态生成el-row
+    @content是带传入的属性
+    ！global是使其全局化
+*/
+@mixin b ($block) {
+    $B: $namespace + '-' + $block !global;
+    .#{$B}{
+        @content;
+    }
+}
+@mixin m($modifier) {
+    $selector:'&';
+    $currentSelect:'';
+    @each $unit in $modifier {
+        $currentSelect : #{ $currentSelect + & + $modifier-separator + $unit + "," };
+    }
+    @at-root {
+        #{$currentSelect}{
+            @content;
+        }
+    }
+}
+@mixin when($state) {
+    &.#{ $state-prefix + $state }{
+        @content;
+    }
+}
